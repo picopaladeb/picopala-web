@@ -9,16 +9,24 @@ const Navbar = (): JSX.Element => {
   }
 
   return (
-    <nav className="bg-white shadow-lg py-2">
-      <div className="max-w-6xl mx-auto px-4 py-3 md:py-0">
+    <nav className="bg-orange-500 shadow-md py-2">
+      <div className="max-w-7xl mx-auto px-4 py-3 md:py-0">
         <div className="flex justify-between">
           <div className="flex space-x-7">
-            <div className="text-primary font-bold text-3xl self-center">
-              <Link href="/">Dev Metrics</Link>
+            <div className="w-60">
+              <Link href="/">
+                <a>
+                  <img
+                    src="/logopicopala_white.png"
+                    alt="logo"
+                    className="w-52"
+                  />
+                </a>
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-3 ">
-            <div className="flex flex-row items-center">
+            {/* <div className="flex flex-row items-center">
               <div className="py-2 px-2 font-medium text-gray-500 rounded  hover:text-white transition duration-300">
                 Tomas Gil
               </div>
@@ -28,7 +36,7 @@ const Navbar = (): JSX.Element => {
               >
                 Log out
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
