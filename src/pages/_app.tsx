@@ -2,6 +2,8 @@ import '../styles/globals.css'
 import React from 'react'
 // Models
 import { PageWithLayout } from 'src/models/nextPage'
+// Contexts
+import { AuthProvider } from 'src/contexts/auth'
 
 type AppProps = {
   Component: PageWithLayout
@@ -11,9 +13,11 @@ type AppProps = {
 function MyApp({ Component, pageProps }: AppProps) {
   const Layout = Component.layout ? Component.layout : React.Fragment
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProvider>
   )
 }
 

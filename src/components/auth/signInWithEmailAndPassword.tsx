@@ -10,22 +10,25 @@ interface UserSignup {
   password: string
 }
 
-const SignUpWithEmailAndPassword = (): JSX.Element => {
+const SignInWithEmailAndPassword = (): JSX.Element => {
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const onSignUpWithEmailAndPassword = async ({
+  const onSignInWithEmailAndPassword = async ({
     email,
     password,
   }: UserSignup) => {
     try {
+      setErrorMessage('')
       setLoading(true)
-      const { error } = await supabase.auth.signUp(
+      const { error } = await supabase.auth.signIn(
         { email, password },
         { redirectTo: 'http://localhost:3000/dashboard' }
       )
+
       if (error) throw error
     } catch (error: any) {
-      alert(error.error_description || error.message)
+      setErrorMessage(error.error_description || error.message)
     } finally {
       setLoading(false)
     }
@@ -37,7 +40,7 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = async (data: any) => await onSignUpWithEmailAndPassword(data)
+  const onSubmit = async (data: any) => await onSignInWithEmailAndPassword(data)
 
   const emailStyles = cx('w-full h-10 border rounded outline-1 px-1', {
     'border-red-500': errors.email,
@@ -70,6 +73,9 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
             <span className="text-red-500">Please, enter a password</span>
           )}
         </div>
+        {errorMessage && (
+          <div className="text-red-500 pb-6">{errorMessage}</div>
+        )}
         <div>
           <button
             type="submit"
@@ -77,7 +83,7 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
             disabled={loading}
           >
             <span className="font-bold text-white">
-              {loading ? 'Loading' : 'Sign up'}
+              {loading ? 'Loading' : 'Sign in'}
             </span>
           </button>
         </div>
@@ -86,4 +92,4 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
   )
 }
 
-export default SignUpWithEmailAndPassword
+export default SignInWithEmailAndPassword

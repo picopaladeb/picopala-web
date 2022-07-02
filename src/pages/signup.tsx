@@ -7,7 +7,7 @@ import SignUpWithEmailAndPassword from 'src/components/auth/signUpWithEmailAndPa
 // Models
 import { PageWithMainLayout } from 'src/models/nextPage'
 
-const Auth: NextPage = () => {
+const SignUp: NextPage = () => {
   return (
     <div className="w-80 mx-auto">
       <div className="text-center text-3xl pb-6">Welcome to Picopala!</div>
@@ -27,6 +27,6 @@ const Auth: NextPage = () => {
   )
 }
 
-;(Auth as PageWithMainLayout).layout = MainLayout
+;(SignUp as PageWithMainLayout).layout = MainLayout
 
-export default Auth
+export default SignUp

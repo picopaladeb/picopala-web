@@ -9,10 +9,12 @@ const SignUpWithGoogle = ({ signUp }: { signUp: boolean }): JSX.Element => {
   const onSignInWithGoogle = async () => {
     try {
       setLoading(true)
-      const { user, session, error } = await supabase.auth.signIn({
-        provider: 'google',
-      })
-      console.log('user', user)
+      const { user, session, error } = await supabase.auth.signIn(
+        {
+          provider: 'google',
+        },
+        { redirectTo: 'http://localhost:3000/dashboard' }
+      )
       if (error) throw error
     } catch (error: any) {
       alert(error.error_description || error.message)
