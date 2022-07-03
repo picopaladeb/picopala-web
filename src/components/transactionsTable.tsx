@@ -2,24 +2,15 @@ import { format } from 'date-fns'
 // Models
 import { Transaction } from 'src/services/models/transactions'
 // Utils
-import {
-  convertSatoshiToBitcoin,
-  formatAsCurrency,
-  capitalizeFirstLetter,
-} from 'src/utils/formatters'
+import { formatAsCurrency, capitalizeFirstLetter } from 'src/utils/formatters'
 
 const TransactionsTable = ({
   transactions,
-  isMeasureUnitBitcoin,
 }: {
   transactions: Transaction[]
-  isMeasureUnitBitcoin: boolean
 }): JSX.Element => {
   const formatAmount = (amount: number): string => {
-    const amountWithUnitType = isMeasureUnitBitcoin
-      ? amount
-      : convertSatoshiToBitcoin(amount)
-    return formatAsCurrency(amountWithUnitType)
+    return formatAsCurrency(amount)
   }
   return (
     <div className="shadow-sm overflow-hidden py-8  rounded-lg">

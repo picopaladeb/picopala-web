@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { nextMonday, differenceInDays, add, format } from 'date-fns'
 // Components
@@ -7,6 +7,11 @@ import TransactionsTable from 'src/components/transactionsTable'
 // Utils
 import { formatAsCurrency } from 'src/utils/formatters'
 import { useRequest } from 'src/utils/hooks/useRequest'
+import {
+  getAvailableFunds,
+  getTotalInterestEarned,
+  getTotalInvestmentsMade,
+} from 'src/utils/calculations'
 // Models
 import { PageWithMainLayout } from 'src/models/nextPage'
 import { Transaction } from 'src/services/models/transactions'
@@ -18,8 +23,6 @@ const Dashboard: NextPage = () => {
   const [investedFunds, setInvestedFunds] = useState(0)
   const [totalInterestEarned, setTotalInterestEarned] = useState(0)
   const nextInterestPayment = nextMonday(new Date())
-
-  const [isMeasureUnitBitcoin, setIsMeasureUnitBitcoin] = useState(true)
 
   const dateCapitalBack = (date: Date) => {
     return add(date, { years: 2 })
@@ -34,7 +37,13 @@ const Dashboard: NextPage = () => {
     result: transactions,
   } = useRequest<Transaction[]>(() => getTransactions())
 
-  console.log('transactions', transactions)
+  useEffect(() => {
+    if (transactions) {
+      setAvailableFunds(getAvailableFunds(transactions))
+      setTotalInterestEarned(getTotalInterestEarned(transactions))
+      setInvestedFunds(getTotalInvestmentsMade(transactions))
+    }
+  }, [transactions])
 
   return (
     <div className="text-gray-800">
@@ -108,10 +117,7 @@ const Dashboard: NextPage = () => {
           <>
             {transactions.length > 0 ? (
               <div>
-                <TransactionsTable
-                  transactions={transactions}
-                  isMeasureUnitBitcoin={isMeasureUnitBitcoin}
-                />
+                <TransactionsTable transactions={transactions} />
               </div>
             ) : (
               <div>You do not have transactions</div>
