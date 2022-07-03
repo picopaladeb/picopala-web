@@ -37,7 +37,9 @@ const SignUpWithGoogle = ({ signUp }: { signUp: boolean }): JSX.Element => {
       >
         <div className="flex items-center justify-center">
           <Image src="/logogoogle.png" alt="me" width="16" height="16" />
-          <span className="pl-2 pb-1">{loading ? 'Loading' : buttonText}</span>
+          <span className="pl-2 pb-1">
+            {loading ? 'Loading...' : buttonText}
+          </span>
         </div>
       </button>
     </div>

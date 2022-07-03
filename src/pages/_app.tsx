@@ -1,9 +1,12 @@
 import '../styles/globals.css'
+import 'react-toastify/dist/ReactToastify.css'
 import React from 'react'
 // Models
 import { PageWithLayout } from 'src/models/nextPage'
 // Contexts
 import { AuthProvider } from 'src/contexts/auth'
+// Components
+import { ToastContainer } from 'react-toastify'
 
 type AppProps = {
   Component: PageWithLayout
@@ -15,7 +18,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <Layout>
-        <Component {...pageProps} />
+        <>
+          <Component {...pageProps} />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            draggable={false}
+            closeOnClick
+            pauseOnHover
+          />
+        </>
       </Layout>
     </AuthProvider>
   )

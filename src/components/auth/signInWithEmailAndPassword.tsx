@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { supabase } from 'src/utils/supabaseClient'
 import { useForm } from 'react-hook-form'
 import cx from 'classnames'
+import { useRouter } from 'next/router'
 // Utils
 import { isEmailValid } from 'src/utils/common'
 
@@ -11,6 +12,7 @@ interface UserSignup {
 }
 
 const SignInWithEmailAndPassword = (): JSX.Element => {
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -21,12 +23,9 @@ const SignInWithEmailAndPassword = (): JSX.Element => {
     try {
       setErrorMessage('')
       setLoading(true)
-      const { error } = await supabase.auth.signIn(
-        { email, password },
-        { redirectTo: 'http://localhost:3000/dashboard' }
-      )
-
+      const { error } = await supabase.auth.signIn({ email, password })
       if (error) throw error
+      router.push('/dashboard')
     } catch (error: any) {
       setErrorMessage(error.error_description || error.message)
     } finally {
@@ -83,7 +82,7 @@ const SignInWithEmailAndPassword = (): JSX.Element => {
             disabled={loading}
           >
             <span className="font-bold text-white">
-              {loading ? 'Loading' : 'Sign in'}
+              {loading ? 'Loading...' : 'Sign in'}
             </span>
           </button>
         </div>

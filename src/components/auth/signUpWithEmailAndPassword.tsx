@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { supabase } from 'src/utils/supabaseClient'
 import { useForm } from 'react-hook-form'
 import cx from 'classnames'
+import { toast } from 'react-toastify'
 // Utils
 import { isEmailValid } from 'src/utils/common'
 
@@ -19,11 +20,11 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
   }: UserSignup) => {
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signUp(
-        { email, password },
-        { redirectTo: 'http://localhost:3000/dashboard' }
-      )
+      const { error } = await supabase.auth.signUp({ email, password })
       if (error) throw error
+      toast.success(
+        'User created! Go to your email box and confirm your email 💪🏼'
+      )
     } catch (error: any) {
       alert(error.error_description || error.message)
     } finally {
@@ -77,7 +78,7 @@ const SignUpWithEmailAndPassword = (): JSX.Element => {
             disabled={loading}
           >
             <span className="font-bold text-white">
-              {loading ? 'Loading' : 'Sign up'}
+              {loading ? 'Loading...' : 'Sign up'}
             </span>
           </button>
         </div>
