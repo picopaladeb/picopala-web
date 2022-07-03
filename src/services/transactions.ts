@@ -19,3 +19,11 @@ export const addTransaction = async ({
     .insert([{ id, user_id: userId, amount, created_at, type }])
   return { data, error }
 }
+
+export const getTransactions = async (): Promise<{
+  data: Transaction[] | null
+  error: any
+}> => {
+  const { data, error } = await supabase.from('transactions').select('*')
+  return { data, error }
+}

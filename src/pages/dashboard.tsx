@@ -3,10 +3,15 @@ import type { NextPage } from 'next'
 import { nextMonday, differenceInDays, add, format } from 'date-fns'
 // Components
 import MainLayout from 'src/layouts'
+import TransactionsTable from 'src/components/transactionsTable'
 // Utils
 import { formatAsCurrency } from 'src/utils/formatters'
+import { useRequest } from 'src/utils/hooks/useRequest'
 // Models
 import { PageWithMainLayout } from 'src/models/nextPage'
+import { Transaction } from 'src/services/models/transactions'
+// Services
+import { getTransactions } from 'src/services/transactions'
 
 const Dashboard: NextPage = () => {
   const [availableFunds, setAvailableFunds] = useState(0)
@@ -14,12 +19,22 @@ const Dashboard: NextPage = () => {
   const [totalInterestEarned, setTotalInterestEarned] = useState(0)
   const nextInterestPayment = nextMonday(new Date())
 
+  const [isMeasureUnitBitcoin, setIsMeasureUnitBitcoin] = useState(true)
+
   const dateCapitalBack = (date: Date) => {
     return add(date, { years: 2 })
   }
   const daysToGetCapitalBack = (date: Date) => {
     return differenceInDays(dateCapitalBack(date), new Date())
   }
+
+  const {
+    loading,
+    error,
+    result: transactions,
+  } = useRequest<Transaction[]>(() => getTransactions())
+
+  console.log('transactions', transactions)
 
   return (
     <div className="text-gray-800">
@@ -88,6 +103,21 @@ const Dashboard: NextPage = () => {
         <div className="text-xl text-orange-500 pb-6">
           Historic transactions
         </div>
+        {loading && <div>Loading transactions...</div>}
+        {transactions && (
+          <>
+            {transactions.length > 0 ? (
+              <div>
+                <TransactionsTable
+                  transactions={transactions}
+                  isMeasureUnitBitcoin={isMeasureUnitBitcoin}
+                />
+              </div>
+            ) : (
+              <div>You do not have transactions</div>
+            )}
+          </>
+        )}
       </div>
     </div>
   )

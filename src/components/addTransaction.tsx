@@ -7,7 +7,7 @@ import { TransactionType } from 'src/services/models/transactions'
 // Utils
 import {
   capitalizeFirstLetter,
-  convertSatoshiBitcoin,
+  convertSatoshiToBitcoin,
 } from 'src/utils/formatters'
 // Services
 import { addTransaction } from 'src/services/transactions'
@@ -27,7 +27,7 @@ const AddTransaction = ({ userId }: { userId: string }): JSX.Element => {
       setLoading(true)
       const amountInBitcoin = isMeasureUnitBitcoin
         ? amount
-        : convertSatoshiBitcoin(amount)
+        : convertSatoshiToBitcoin(amount)
       const { data, error } = await addTransaction({
         userId,
         amount: amountInBitcoin,

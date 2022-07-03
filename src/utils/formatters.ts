@@ -1,8 +1,8 @@
 export const formatAsCurrency = (value: number) => {
-  return `₿${value}`
+  return `₿ ${value}`
 }
 
-export const convertSatoshiBitcoin = (value: number) => {
+export const convertSatoshiToBitcoin = (value: number) => {
   return value / 100000000
 }
 
