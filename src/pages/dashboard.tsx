@@ -4,6 +4,7 @@ import { nextMonday, differenceInDays, add, format } from 'date-fns'
 // Components
 import MainLayout from 'src/layouts'
 import TransactionsTable from 'src/components/transactionsTable'
+import ContactModal from 'src/components/contactModal'
 // Utils
 import { formatAsCurrency } from 'src/utils/formatters'
 import { useRequest } from 'src/utils/hooks/useRequest'
@@ -67,12 +68,13 @@ const Dashboard: NextPage = () => {
             </div>
           </div>
           <div className="pt-4">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center pb-4">
               <div className="text-lg font-bold">
                 {format(nextInterestPayment, 'PP')}
               </div>
               <div>Next interest payment</div>
             </div>
+            <ContactModal />
           </div>
         </div>
       </div>
@@ -100,11 +102,6 @@ const Dashboard: NextPage = () => {
                 <div>Interest payments</div>
               </div>
             </div>
-            <div className="w-40 mx-auto">
-              <button className=" w-full h-10 rounded bg-orange-500 shadow-sm">
-                <span className="font-bold text-white">Invest</span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -120,7 +117,9 @@ const Dashboard: NextPage = () => {
                 <TransactionsTable transactions={transactions} />
               </div>
             ) : (
-              <div>You do not have transactions</div>
+              <div>
+                <ContactModal />
+              </div>
             )}
           </>
         )}

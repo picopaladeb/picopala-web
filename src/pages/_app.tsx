@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
+import '@reach/dialog/styles.css'
 import React from 'react'
 // Models
 import { PageWithLayout } from 'src/models/nextPage'
