@@ -49,62 +49,64 @@ const Dashboard: NextPage = () => {
   return (
     <div className="text-gray-800">
       <div className="text-2xl md:text-3xl font-bold pb-6">Your dashboard</div>
-
-      <div className="border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
-        <div className="text-xl text-orange-500 pb-6">Your funds</div>
-        <div className="divide-y-2">
-          <div className="flex justify-evenly pb-4">
-            <div className="flex flex-col items-center">
-              <div className="text-lg font-bold">
-                {formatAsCurrency(availableFunds)}
+      <div className="lg:flex">
+        <div className="lg:mr-3 lg:flex-1 border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
+          <div className="text-xl text-orange-500 pb-6">Your funds</div>
+          <div className="divide-y-2">
+            <div className="flex justify-evenly pb-4">
+              <div className="flex flex-col items-center">
+                <div className="text-lg font-bold">
+                  {formatAsCurrency(availableFunds)}
+                </div>
+                <div>Available funds</div>
               </div>
-              <div>Available funds</div>
+              <div className="flex flex-col items-center">
+                <div className="text-lg font-bold">
+                  {formatAsCurrency(totalInterestEarned)}
+                </div>
+                <div>Total interest earned</div>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <div className="text-lg font-bold">
-                {formatAsCurrency(totalInterestEarned)}
+            <div className="pt-4">
+              <div className="flex flex-col items-center pb-4">
+                <div className="text-lg font-bold">
+                  {format(nextInterestPayment, 'PP')}
+                </div>
+                <div>Next interest payment</div>
               </div>
-              <div>Total interest earned</div>
+              <ContactModal />
             </div>
           </div>
-          <div className="pt-4">
+        </div>
+        <div className="lg:ml-3 lg:flex-1 border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
+          <div className="text-xl text-orange-500 pb-6">Your investments</div>
+          <div className="divide-y-2">
             <div className="flex flex-col items-center pb-4">
               <div className="text-lg font-bold">
-                {format(nextInterestPayment, 'PP')}
+                {formatAsCurrency(investedFunds)}
               </div>
-              <div>Next interest payment</div>
+              <div>Total invested funds</div>
             </div>
-            <ContactModal />
-          </div>
-        </div>
-      </div>
-      <div className="border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
-        <div className="text-xl text-orange-500 pb-6">Your investments</div>
-        <div className="divide-y-2">
-          <div className="flex flex-col items-center pb-4">
-            <div className="text-lg font-bold">
-              {formatAsCurrency(investedFunds)}
-            </div>
-            <div>Total invested funds</div>
-          </div>
-          <div className="pt-4">
-            <div className="flex justify-evenly pb-6">
-              <div className="flex flex-col items-center">
-                <div className="text-lg font-bold">2 years</div>
-                <div>Term</div>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="text-lg font-bold">1%</div>
-                <div>APY</div>
-              </div>
-              <div className="flex flex-col items-center">
-                <div className="text-lg font-bold">Every monday</div>
-                <div>Interest payments</div>
+            <div className="pt-4">
+              <div className="flex justify-evenly pb-6">
+                <div className="flex flex-col items-center">
+                  <div className="text-lg font-bold">2 years</div>
+                  <div>Term</div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="text-lg font-bold">1%</div>
+                  <div>APY</div>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="text-lg font-bold">Every monday</div>
+                  <div>Interest payments</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div>
         <div className="text-xl text-orange-500 pb-6">
           Historic transactions

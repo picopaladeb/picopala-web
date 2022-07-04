@@ -7,8 +7,11 @@ import Head from 'next/head'
 import Link from 'next/link'
 // Models
 import { PageWithMainLayout } from 'src/models/nextPage'
+// Utils
+import { useAuth } from 'src/contexts/auth'
 
 const Home: NextPage = () => {
+  const user = useAuth()
   return (
     <div>
       <Head>
@@ -26,7 +29,7 @@ const Home: NextPage = () => {
           </h3>
           <div className="flex justify-center md:justify-start">
             <div className="w-40">
-              <Link href="/signup">
+              <Link href={user ? '/dashboard' : '/signup'}>
                 <a>
                   <button className=" w-full h-10 rounded bg-orange-500 shadow-sm">
                     <span className="font-bold text-white">Start earning</span>
@@ -113,13 +116,13 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 py-10 md:py-16">
+      <div className="grid pb-24 grid-cols-12 py-10 md:pt-16">
         <div className="col-span-full text-2xl md:text-3xl text-gray-800 pb-8 text-center font-medium">
           Are you ready to start growning your Bitcoin?
         </div>
         <div className="col-span-full">
           <div className="w-40 mx-auto">
-            <Link href="/signup">
+            <Link href={user ? '/dashboard' : '/signup'}>
               <a>
                 <button className=" w-full h-10 rounded bg-orange-500 shadow-sm">
                   <span className="font-bold text-white">Start earning</span>

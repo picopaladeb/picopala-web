@@ -19,7 +19,7 @@ const ContactModal = ({}) => {
       <Dialog aria-label="Contact" isOpen={showDialog} onDismiss={close}>
         <div className="flex justify-end">
           <button className="close-button" onClick={close}>
-            x
+            <img className="w-4 h-4" src="/close_icon.png" />
           </button>
         </div>
         <div className="pb-6">

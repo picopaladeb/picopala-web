@@ -99,7 +99,9 @@ const Admin: NextPage = () => {
             <span className="font-bold pr-2">User selected:</span>
             <span>{user.id}</span>
           </div>
-          <AddTransaction userId={user.id} />
+          <div className="max-w-xl mx-auto">
+            <AddTransaction userId={user.id} />
+          </div>
         </div>
       )}
     </div>
