@@ -19,13 +19,66 @@ const Navbar = (): JSX.Element => {
 
   const user = useAuth()
 
-  const userName = user?.email
-
   const menuStyles = cx('w-full md:block md:w-auto', { hidden: !displayMenu })
+
+  const menuItems = () => {
+    return (
+      <>
+        <li>
+          <Link href="/about-us">
+            <a>
+              <button
+                onClick={() => setDisplayMenu(false)}
+                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+              >
+                About us
+              </button>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/enterprise-api">
+            <a>
+              <button
+                onClick={() => setDisplayMenu(false)}
+                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+              >
+                Enterprise API
+              </button>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/faqs">
+            <a>
+              <button
+                onClick={() => setDisplayMenu(false)}
+                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+              >
+                FAQs
+              </button>
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/faqs">
+            <a>
+              <button
+                onClick={() => setDisplayMenu(false)}
+                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+              >
+                Chat
+              </button>
+            </a>
+          </Link>
+        </li>
+      </>
+    )
+  }
 
   return (
     <nav className="bg-orange-500  px-2 sm:px-4 py-2.5">
-      <div className="container flex flex-wrap justify-between items-center mx-auto">
+      <div className=" max-w-6xl flex flex-wrap justify-between items-center mx-auto">
         <div className="w-60">
           <Link href="/">
             <a>
@@ -68,10 +121,20 @@ const Navbar = (): JSX.Element => {
         <div className={menuStyles} id="mobile-menu">
           {user ? (
             <div className="pt-8 md:pt-0 flex flex-col md:flex-row md:items-center">
-              <span className="px-3 text-white md:mt-0 text-lg font-bold pb-4 md:pb-0">
-                {userName}
-              </span>
-              <ul className="flex flex-col md:flex-row md:items-center md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+              <ul className="flex flex-col md:flex-row md:items-center md:mt-0 md:text-sm md:font-medium">
+                {menuItems()}
+                <li>
+                  <Link href="/dashboard">
+                    <a>
+                      <button
+                        onClick={() => setDisplayMenu(false)}
+                        className="block py-2 pr-4 mr-4 pl-3 text-orange-500 bg-white font-bold text-lg rounded-lg"
+                      >
+                        Dashboard
+                      </button>
+                    </a>
+                  </Link>
+                </li>
                 <li>
                   <button
                     onClick={logOut}
@@ -85,6 +148,7 @@ const Navbar = (): JSX.Element => {
           ) : (
             <div>
               <ul className="flex flex-col mt-4 md:flex-row md:items-center md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                {menuItems()}
                 <li>
                   <Link href="/signup">
                     <a>

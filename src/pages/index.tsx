@@ -25,7 +25,7 @@ const Home: NextPage = () => {
             Get pure Bitcoin returns!
           </h1>
           <h3 className="w-full text-center md:text-left text-xl md:text-3xl text-gray-800 pb-8">
-            Make them work 💪🏼
+            1% APY and weekly payouts 🚀
           </h3>
           <div className="flex justify-center md:justify-start">
             <div className="w-40">
@@ -42,7 +42,7 @@ const Home: NextPage = () => {
         <div className="col-span-full md:col-span-6">
           <div className="max-w-xs mx-auto">
             <Image
-              src="/ilustration_front.svg"
+              src="/home/mining-hardware.png"
               alt="picopala"
               layout="responsive"
               width={'100%'}
@@ -56,22 +56,24 @@ const Home: NextPage = () => {
           How does Picopala work?
         </div>
         <div className="flex flex-col md:flex-row items-center md:justify-around col-span-full">
-          <div className="flex flex-col items-center w-56 px-4 py-6 mb-4 rounded-lg shadow-lg">
-            <div className="w-32 h-32">
+          <div className="flex flex-col items-center w-64 md: px-4 py-6 h-60 mb-4 rounded-lg shadow-lg">
+            <div className="w-32 h-32 mb-4">
               <Image
-                src="/picopala_icono_circulo.png"
+                src="/home/send.png"
                 alt="picopala-icono"
                 layout="responsive"
                 width={'100%'}
                 height={'100%'}
               />
             </div>
-            <span className="text-lg text-center">We receive the funds</span>
+            <span className="text-lg text-center w-full">
+              We receive the funds
+            </span>
           </div>
-          <div className="flex flex-col items-center w-56 px-4 py-6 mb-4 rounded-lg shadow-lg">
-            <div className="w-32 h-32">
+          <div className="flex flex-col items-center w-64 px-4 py-6 h-60 mb-4 rounded-lg shadow-lg">
+            <div className="w-32 h-32 mb-4">
               <Image
-                src="/picopala_icono_circulo.png"
+                src="/home/gpu-mining.png"
                 alt="picopala"
                 layout="responsive"
                 width={'100%'}
@@ -83,10 +85,10 @@ const Home: NextPage = () => {
               We buy the best ASICs in the market
             </span>
           </div>
-          <div className="flex flex-col items-center w-56 px-4 py-6 mb-4 rounded-lg shadow-lg">
-            <div className="w-32 h-32">
+          <div className="flex flex-col items-center w-64 px-4 py-6 h-60 mb-4 rounded-lg shadow-lg">
+            <div className="w-32 h-32 mb-4">
               <Image
-                src="/picopala_icono_circulo.png"
+                src="/home/bitcoin.png"
                 alt="picopala"
                 layout="responsive"
                 width={'100%'}
@@ -97,17 +99,17 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 bg-orange-300 -mx-4 md:-mx-8 py-10 md:py-16">
+      <div className="grid grid-cols-12 bg-orange-300 -mx-4 md:-mx-8 py-10 md:py-16 md:rounded-xl">
         <div className="col-span-full text-2xl md:text-3xl text-gray-800 pb-8 text-center font-medium">
           Who is investing in Picopala?
         </div>
-        <div className="col-span-full text-lg text-center pb-6 md:pb-10 max-w-xs mx-auto md:max-w-md">
-          More than 30 Bitcoins under management from 100 customers
+        <div className="col-span-full text-lg text-center max-w-xs mx-auto md:max-w-md">
+          More than 10 Bitcoins under management from 25 customers
         </div>
         <div className="col-span-full">
-          <div className="w-60 mx-auto">
+          <div className="w-72 mx-auto">
             <Image
-              src="/two_bitcoin_symbols.png"
+              src="/home/bitcoin-investors.svg"
               alt="picopala"
               layout="responsive"
               width={'100%'}
