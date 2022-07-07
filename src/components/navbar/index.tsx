@@ -7,6 +7,12 @@ import Link from 'next/link'
 // Utils
 import { useAuth } from 'src/contexts/auth'
 
+declare global {
+  interface Window {
+    HubSpotConversations: any
+  }
+}
+
 const Navbar = (): JSX.Element => {
   const router = useRouter()
   const [displayMenu, setDisplayMenu] = useState(false)
@@ -20,6 +26,13 @@ const Navbar = (): JSX.Element => {
   const user = useAuth()
 
   const menuStyles = cx('w-full md:block md:w-auto', { hidden: !displayMenu })
+
+  const onChat = () => {
+    setDisplayMenu(false)
+    if (window) {
+      window.HubSpotConversations.widget.open()
+    }
+  }
 
   const menuItems = () => {
     return (
@@ -61,16 +74,12 @@ const Navbar = (): JSX.Element => {
           </Link>
         </li>
         <li>
-          <Link href="/faqs">
-            <a>
-              <button
-                onClick={() => setDisplayMenu(false)}
-                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
-              >
-                Chat
-              </button>
-            </a>
-          </Link>
+          <button
+            onClick={() => onChat()}
+            className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+          >
+            Chat
+          </button>
         </li>
       </>
     )
