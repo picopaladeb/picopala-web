@@ -119,9 +119,7 @@ const Dashboard: NextPage = () => {
                 <TransactionsTable transactions={transactions} />
               </div>
             ) : (
-              <div>
-                <ContactModal />
-              </div>
+              <div>You haven&apos;t made any transactions yet</div>
             )}
           </>
         )}

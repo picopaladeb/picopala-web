@@ -8,6 +8,7 @@ import { PageWithLayout } from 'src/models/nextPage'
 import { AuthProvider } from 'src/contexts/auth'
 // Components
 import { ToastContainer } from 'react-toastify'
+import Head from 'next/head'
 
 type AppProps = {
   Component: PageWithLayout
@@ -19,6 +20,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <Layout>
+        <Head>
+          <script
+            type="text/javascript"
+            id="hs-script-loader"
+            async
+            defer
+            src="//js-na1.hs-scripts.com/22285624.js"
+          ></script>
+        </Head>
         <>
           <Component {...pageProps} />
           <ToastContainer
