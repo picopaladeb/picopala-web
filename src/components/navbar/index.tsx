@@ -116,7 +116,7 @@ const Navbar = (): JSX.Element => {
                     <a>
                       <button
                         onClick={() => setDisplayMenu(false)}
-                        className="block py-2 mb-4 pr-4 mr-4 pl-3 text-orange-500 bg-white font-bold text-lg rounded-lg"
+                        className="block py-2 mb-4 md:mb-0 pr-4 mr-4 pl-3 text-orange-500 bg-white font-bold text-lg rounded-lg"
                       >
                         Dashboard
                       </button>
