@@ -6,7 +6,7 @@ export const getTotal = (
   type: TransactionType
 ): number => {
   return transactions
-    .filter((transaction) => transaction.type === type)
+    .filter((transaction) => transaction.type_tx === type)
     .reduce(
       (previousValue, transaction) => previousValue + transaction.amount,
       0

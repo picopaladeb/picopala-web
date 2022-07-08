@@ -6,17 +6,19 @@ import { TransactionType, Transaction } from 'src/services/models/transactions'
 export const addTransaction = async ({
   userId,
   amount,
-  type,
+  type_tx,
 }: {
   userId: string
   amount: number
-  type: TransactionType
+  type_tx: TransactionType
 }): Promise<{ data: Transaction[] | null; error: any }> => {
   const id = uuidv4()
   const created_at = new Date()
   const { data, error } = await supabase
     .from('transactions')
-    .insert([{ id, user_id: userId, amount, created_at, type }])
+    .insert([{ id, user_id: userId, amount, created_at, type_tx }], {
+      returning: 'minimal',
+    })
   return { data, error }
 }
 

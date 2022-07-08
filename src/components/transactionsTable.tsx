@@ -39,7 +39,7 @@ const TransactionsTable = ({
                 {formatAmount(transaction.amount)}
               </td>
               <td className="border-b border-slate-300 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
-                {capitalizeFirstLetter(transaction.type)}
+                {capitalizeFirstLetter(transaction.type_tx)}
               </td>
             </tr>
           ))}

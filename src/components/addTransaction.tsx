@@ -31,7 +31,7 @@ const AddTransaction = ({ userId }: { userId: string }): JSX.Element => {
       const { data, error } = await addTransaction({
         userId,
         amount: amountInBitcoin,
-        type: transactionType,
+        type_tx: transactionType,
       })
       if (error) throw error
       toast.success('Transaction saved! 💪🏼')

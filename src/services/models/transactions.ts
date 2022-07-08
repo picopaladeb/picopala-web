@@ -8,6 +8,6 @@ export interface Transaction {
   id: string
   created_at: Date
   amount: number
-  type: TransactionType
+  type_tx: TransactionType
   user_id: string
 }

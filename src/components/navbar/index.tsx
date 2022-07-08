@@ -29,7 +29,7 @@ const Navbar = (): JSX.Element => {
             <a>
               <button
                 onClick={() => setDisplayMenu(false)}
-                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+                className="block py-2 pr-4 md:pl-3 text-white font-bold text-lg"
               >
                 About us
               </button>
@@ -41,7 +41,7 @@ const Navbar = (): JSX.Element => {
             <a>
               <button
                 onClick={() => setDisplayMenu(false)}
-                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+                className="block py-2 pr-4 md:pl-3 text-white font-bold text-lg"
               >
                 Enterprise API
               </button>
@@ -53,7 +53,7 @@ const Navbar = (): JSX.Element => {
             <a>
               <button
                 onClick={() => setDisplayMenu(false)}
-                className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+                className="block py-2 pr-4 md:pl-3 text-white font-bold text-lg"
               >
                 FAQs
               </button>
@@ -116,7 +116,7 @@ const Navbar = (): JSX.Element => {
                     <a>
                       <button
                         onClick={() => setDisplayMenu(false)}
-                        className="block py-2 pr-4 mr-4 pl-3 text-orange-500 bg-white font-bold text-lg rounded-lg"
+                        className="block py-2 mb-4 pr-4 mr-4 pl-3 text-orange-500 bg-white font-bold text-lg rounded-lg"
                       >
                         Dashboard
                       </button>
@@ -126,7 +126,7 @@ const Navbar = (): JSX.Element => {
                 <li>
                   <button
                     onClick={logOut}
-                    className="h-10 rounded border mx-3 md:mx-0 px-3 border-white text-white font-bold text-lg"
+                    className="h-10 rounded border mr-3 md:mx-0 px-3 border-white text-white font-bold text-lg"
                   >
                     Log out
                   </button>
@@ -142,7 +142,7 @@ const Navbar = (): JSX.Element => {
                     <a>
                       <button
                         onClick={() => setDisplayMenu(false)}
-                        className="block py-2 pr-4 pl-3 text-white font-bold text-lg"
+                        className="block py-2 pr-4 md:pl-3 text-white font-bold text-lg"
                       >
                         Sign up
                       </button>
@@ -154,7 +154,7 @@ const Navbar = (): JSX.Element => {
                     <a>
                       <button
                         onClick={() => setDisplayMenu(false)}
-                        className="h-10 rounded border mx-3 md:mx-0 px-3 border-white text-white font-bold text-lg"
+                        className="h-10 rounded border mr-3 md:mx-0 px-3 border-white text-white font-bold text-lg"
                       >
                         Log in
                       </button>
