@@ -4,6 +4,7 @@ interface useRequestResult<Result> {
   loading: boolean
   result: Result | null
   error: string | null
+  makeRequest: any
 }
 
 interface Request<Result> {
@@ -22,21 +23,22 @@ export const useRequest = <Result>(
 
   const user = useAuth()
 
-  useEffect(() => {
-    const makeRequest = async (): Promise<void> => {
-      try {
-        const { data, error } = await request()
-        if (error) throw error
-        setResult(data)
-        setLoading(false)
-      } catch (err: any) {
-        setError(err.message)
-        setLoading(false)
-      }
+  const makeRequest = async (): Promise<void> => {
+    try {
+      const { data, error } = await request()
+      if (error) throw error
+      setResult(data)
+      setLoading(false)
+    } catch (err: any) {
+      setError(err.message)
+      setLoading(false)
     }
+  }
+
+  useEffect(() => {
     if (user?.email) {
       makeRequest()
     }
   }, [user?.email])
-  return { loading, error, result }
+  return { loading, error, result, makeRequest }
 }

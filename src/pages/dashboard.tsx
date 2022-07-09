@@ -5,6 +5,7 @@ import { nextMonday, differenceInDays, add, format } from 'date-fns'
 import MainLayout from 'src/layouts'
 import TransactionsTable from 'src/components/transactionsTable'
 import ContactModal from 'src/components/contactModal'
+import InvestFunds from 'src/components/investFunds'
 // Utils
 import { formatAsCurrency } from 'src/utils/formatters'
 import { useRequest } from 'src/utils/hooks/useRequest'
@@ -36,6 +37,7 @@ const Dashboard: NextPage = () => {
     loading,
     error,
     result: transactions,
+    makeRequest,
   } = useRequest<Transaction[]>(() => getTransactions())
 
   useEffect(() => {
@@ -80,7 +82,7 @@ const Dashboard: NextPage = () => {
         </div>
         <div className="lg:ml-3 lg:flex-1 border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
           <div className="text-xl text-orange-500 pb-6">Your investments</div>
-          <div className="divide-y-2">
+          <div className="divide-y-2 pb-4">
             <div className="flex flex-col items-center pb-4">
               <div className="text-lg font-bold">
                 {formatAsCurrency(investedFunds)}
@@ -103,6 +105,12 @@ const Dashboard: NextPage = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div>
+            <InvestFunds
+              availableFunds={availableFunds}
+              onInvestFunds={makeRequest}
+            />
           </div>
         </div>
       </div>
