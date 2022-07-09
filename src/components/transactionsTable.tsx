@@ -9,6 +9,9 @@ const TransactionsTable = ({
 }: {
   transactions: Transaction[]
 }): JSX.Element => {
+  const sortedTransactions = transactions
+    .deepCopy()
+    .sortByKey('created_at', 'desc')
   const formatAmount = (amount: number): string => {
     return formatAsCurrency(amount)
   }
@@ -29,7 +32,7 @@ const TransactionsTable = ({
           </tr>
         </thead>
         <tbody className="bg-white dark:bg-slate-800">
-          {transactions.map((transaction) => (
+          {sortedTransactions.map((transaction) => (
             <tr key={transaction.created_at as any}>
               <td className="border-b border-slate-300 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">
                 {format(new Date(transaction.created_at), 'PP')}

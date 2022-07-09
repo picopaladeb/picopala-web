@@ -9,6 +9,8 @@ import { AuthProvider } from 'src/contexts/auth'
 // Components
 import { ToastContainer } from 'react-toastify'
 import Head from 'next/head'
+// Utils
+import 'src/utils/array'
 
 type AppProps = {
   Component: PageWithLayout
