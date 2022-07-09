@@ -52,7 +52,7 @@ const Dashboard: NextPage = () => {
     <div className="text-gray-800">
       <div className="text-2xl md:text-3xl font-bold pb-6">Your dashboard</div>
       <div className="lg:flex">
-        <div className="lg:mr-3 lg:flex-1 border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
+        <div className="lg:mr-3 flex flex-col lg:flex-1 border border-slate-400 rounded-lg p-4 md:p-8 shadow-lg mb-6">
           <div className="text-xl text-orange-500 pb-6">Your funds</div>
           <div className="divide-y-2">
             <div className="flex justify-evenly pb-4">
@@ -76,11 +76,13 @@ const Dashboard: NextPage = () => {
                 </div>
                 <div>Next interest payment</div>
               </div>
-              <ContactModal />
             </div>
           </div>
+          <div className="mt-auto">
+            <ContactModal />
+          </div>
         </div>
-        <div className="lg:ml-3 lg:flex-1 border border-slate-400 rounded-lg p-4 shadow-lg mb-6">
+        <div className="lg:ml-3 lg:flex-1 border border-slate-400 rounded-lg p-4 md:p-8 shadow-lg mb-6">
           <div className="text-xl text-orange-500 pb-6">Your investments</div>
           <div className="divide-y-2 pb-4">
             <div className="flex flex-col items-center pb-4">
@@ -106,16 +108,18 @@ const Dashboard: NextPage = () => {
               </div>
             </div>
           </div>
-          <div>
-            <InvestFunds
-              availableFunds={availableFunds}
-              onInvestFunds={makeRequest}
-            />
-          </div>
+          {availableFunds > 0 && (
+            <div>
+              <InvestFunds
+                availableFunds={availableFunds}
+                onInvestFunds={makeRequest}
+              />
+            </div>
+          )}
         </div>
       </div>
 
-      <div>
+      <div className="md:pb-24">
         <div className="text-xl text-orange-500 pb-6">
           Historic transactions
         </div>

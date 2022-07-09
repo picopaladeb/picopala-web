@@ -75,7 +75,7 @@ const InvestFunds = ({
       <div className="flex justify-center">
         <button
           type="submit"
-          className="h-10 rounded border mr-3 md:mx-0 px-3 border-orange-500 text-orange-500 font-bold text-lg"
+          className="h-10 rounded border mr-3 md:mx-0 px-3 border-orange-500 text-orange-500 font-bold"
         >
           {loading ? 'Investing funds...' : 'Invest funds'}
         </button>

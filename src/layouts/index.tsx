@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
       <Navbar />
-      <div className="pt-8 max-w-6xl mx-auto px-4 md:px-8 md:mb-10">
+      <div className="pt-8 max-w-6xl mx-auto px-4 md:px-8 md:pb-24">
         {children}
       </div>
       <Footer />
