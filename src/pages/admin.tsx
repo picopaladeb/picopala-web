@@ -26,7 +26,6 @@ const Admin: NextPage = () => {
     setErrorMessage('')
     try {
       const result = await getUser(email)
-      console.log('result', result)
       if (!result.data || result.data.length === 0) {
         setErrorMessage('User not found')
       } else {
