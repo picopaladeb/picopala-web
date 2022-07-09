@@ -118,7 +118,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="grid pb-24 grid-cols-12 py-10 md:pt-16">
+      <div className="grid pb-24 grid-cols-12 py-24 md:pt-16">
         <div className="col-span-full text-2xl md:text-3xl text-gray-800 pb-8 text-center font-medium">
           Are you ready to start growning your Bitcoin?
         </div>
